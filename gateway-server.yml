@@ -61,16 +61,6 @@ spring:
               filters:
                 - JwtAuthenticationFilter
 
-management:
-  tracing:
-    enabled: true
-    sampling:
-      probability: 1.0
-
-  zipkin:
-    tracing:
-      endpoint: ${ZIPKIN_SERVER}
-
 jwt:
   secret:
     key: ${JWT_SECRET_KEY}

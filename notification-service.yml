@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${NOTIFICATION_DB_HOST}:${NOTIFICATION_DB_PORT}/${NOTIFICAITION_DB_NAME}
+    username: ${NOTIFICATION_DB_USER}
+    password: ${NOTIFICATION_DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        impl.uuid_binary_compatibility: true
+  # Redis 설정, Redis 사용하지 않을 시 주석처리
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: ${OPENAI_MODEL_NAME}  # 사용할 모델
+          temperature: ${OPENAI_TEMPERATURE}  # 응답의 다양성
+
+
+slack:
+  api:
+    url: ${SLACK_API_URL:https://slack.com/api}
+  bot:
+    token: ${SLACK_BOT_TOKEN}
+
+message:
+  exchange: baekma.exchange # Producer만 적용
+  queue:
+    delivery: delivery.queue
+    hub: hub.queue
+    notification: notification.queue
+    order: order.queue
