@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:default}
+    username: ${DB_USER:default}
+    password: ${DB_PASSWORD:default}
   jpa:
     hibernate:
       ddl-auto: update
@@ -29,10 +29,10 @@ spring:
       port: ${REDIS_PORT:6379}
 
   rabbitmq:
-    host: ${RABBITMQ_HOST}
-    port: ${RABBITMQ_PORT}
-    username: ${RABBITMQ_USERNAME}
-    password: ${RABBITMQ_PASSWORD}
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
 
 management:
   tracing:
@@ -42,7 +42,7 @@ management:
 
   zipkin:
     tracing:
-      endpoint: ${ZIPKIN_SERVER}
+      endpoint: ${ZIPKIN_SERVER:http://localhost:9411/api/v2/spans}
 
 resilience4j:
   circuitbreaker:
