@@ -63,4 +63,4 @@ spring:
 
 jwt:
   secret:
-    key: ${JWT_SECRET_KEY}
+    key: ${JWT_SECRET_KEY:your-256-bit-secret-key-for-logistics-system-jwt-authentication-must-be-long}
