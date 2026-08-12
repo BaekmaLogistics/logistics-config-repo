@@ -1,0 +1,17 @@
+message:
+  exchange: baekma.exchange # Producer만 적용
+  queue:
+    delivery: delivery.queue
+    hub: hub.queue
+    notification: notification.queue
+  binding-key:
+    notification:
+      delivery-status-changed: delivery.status.changed
+
+outbox:
+  relay:
+    fixed-delay: 3000 # OutboxRelay가 PENDING 레코드를 폴링하는 주기(ms)
+
+eureka:
+  instance:
+    prefer-ip-address: true
