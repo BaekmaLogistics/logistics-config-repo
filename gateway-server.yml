@@ -123,6 +123,15 @@ spring:
               filters:
                 # /zipkin 혹은 /zipkin/ui 로 들어오는 요청을 Zipkin 내부 경로로 연결
                 - RewritePath=/zipkin(?<segment>/?.*), /zipkin$\{segment}
+            # RabbitMQ Management 대시보드 UI 라우팅
+            - id: rabbitmq-management-ui
+              uri: http://logistics-rabbitmq:15672
+              predicates:
+                - Path=/rabbitmq/**
+              filters:
+                # /rabbitmq 또는 /rabbitmq/ 경로로 들어오면 RabbitMQ 내부 경로로 프리픽스 제거
+                - RewritePath=/rabbitmq(?<segment>/?.*), /$\{segment}
+
           globalcors:
             cors-configurations:
               '[/**]':
