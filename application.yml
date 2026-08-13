@@ -54,6 +54,11 @@ resilience4j:
         failureRateThreshold: 50
         permittedNumberOfCallsInHalfOpenState: 3
         waitDurationInOpenState: 20s
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 3s      # 타임아웃을 3초로 늘림
+        cancel-running-future: true
 
 springdoc:
   api-docs:
